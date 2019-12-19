@@ -1,16 +1,17 @@
 .Home {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
   min-width: 100vw;
-  justify-content: center;
   align-items: center;
   background-color: var(--white);
 }
 
+.containerTitle {
+  display: flex;
+  justify-content: center;
+}
+
 .Github-Search {
-  width: 415px;
-  height: 81px;
   font-family: Monaco;
   font-size: 60px;
   font-weight: normal;
@@ -19,18 +20,11 @@
   line-height: normal;
   letter-spacing: normal;
   color: #000000;
+  margin-right: 10px;
 }
 
 .text-style-1 {
   font-family: Raleway;
-  font-weight: 200;
+  font-weight: 100;
   font-style: italic;
-}
-
-.Search-Icon {
-  width: 30px;
-  height: 30.1px;
-  object-fit: contain;
-  box-shadow: 0 0 4px NaNpx var(--black-40);
-  background-color: var(--white);
 }
