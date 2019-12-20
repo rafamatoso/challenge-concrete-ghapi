@@ -1,7 +1,10 @@
 .Result {
-  width: 1152px;
-  height: 800px;
+  display: flex;
+  align-items: center;
   background-color: var(--white);
+  padding-top: 35px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .containerHeader {
@@ -11,7 +14,7 @@
 
 .Github-Search {
   font-family: Monaco;
-  font-size: 60px;
+  font-size: 40px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -25,4 +28,19 @@
   font-family: Raleway;
   font-weight: 100;
   font-style: italic;
+}
+
+.containerColUserInfo {
+  padding-top: 53px;
+}
+
+.user-avatar {
+  width: 280px;
+  height: 280px;
+  border-radius: 2px;
+  box-shadow: 0 0 4px NaNpx var(--black-40);
+}
+
+.containerColReposInfo {
+  padding-top: 53px;
 }

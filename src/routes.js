@@ -5,11 +5,13 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const Routes = () => (
   <BrowserRouter>
-    <div style={{ display: "flex", flex: "1", justifyContent: "center" }}>
-      <Switch>
-        <Route path={"/"} exact={true} component={Home}></Route>
-        <Route path={"/result/:search"} component={Result}></Route>
-      </Switch>
+    <div className="containerRoutes">
+      <div className="maxWidth">
+        <Switch>
+          <Route path={"/"} exact={true} component={Home}></Route>
+          <Route path={"/result/:search"} component={Result}></Route>
+        </Switch>
+      </div>
     </div>
   </BrowserRouter>
 );

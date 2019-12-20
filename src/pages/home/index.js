@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import SearchBar from "../../components/searchBar";
 import { Container, Row, Col } from "react-grid-system";
 import api from "../../services/apiGitHub";
@@ -9,7 +9,7 @@ function Home(props) {
 
   async function handlerSumbmit(event) {
     event.preventDefault();
-    await api.get(`${username}`).then(result => {
+    await api.get(`/users/${username}`).then(result => {
       props.history.push(`/result/${username}`);
     });
   }

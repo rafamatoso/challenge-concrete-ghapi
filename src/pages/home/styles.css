@@ -1,6 +1,6 @@
 .Home {
   display: flex;
-  min-height: 100vh;
+  min-height: 80vh;
   min-width: 100vw;
   align-items: center;
   background-color: var(--white);
@@ -11,7 +11,7 @@
   justify-content: center;
 }
 
-.Github-Search {
+/*.Github-Search {
   font-family: Monaco;
   font-size: 60px;
   font-weight: normal;
@@ -27,4 +27,4 @@
   font-family: Raleway;
   font-weight: 100;
   font-style: italic;
-}
+}*/

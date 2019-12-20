@@ -1,0 +1,10 @@
+.containerRoutes {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.maxWidth {
+  width: 1152px;
+}

@@ -1,6 +1,4 @@
 import React from "react";
-//import { Link } from "react-router-dom";
-
 import "./styles.css";
 
 function SearchBar(props) {
@@ -16,7 +14,7 @@ function SearchBar(props) {
           ></input>
           <button type="submit">
             <img
-              src="img/search-icon.svg"
+              src={require("../../img/search-icon.svg")}
               className="Search-Icon"
               alt="Search-Icon"
             />
