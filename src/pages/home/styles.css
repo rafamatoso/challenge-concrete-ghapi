@@ -1,30 +1,18 @@
 .Home {
   display: flex;
-  min-height: 80vh;
-  min-width: 100vw;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
   align-items: center;
   background-color: var(--white);
+}
+
+.widthSearchBar {
+  width: 600px;
 }
 
 .containerTitle {
   display: flex;
   justify-content: center;
 }
-
-/*.Github-Search {
-  font-family: Monaco;
-  font-size: 60px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #000000;
-  margin-right: 10px;
-}
-
-.text-style-1 {
-  font-family: Raleway;
-  font-weight: 100;
-  font-style: italic;
-}*/

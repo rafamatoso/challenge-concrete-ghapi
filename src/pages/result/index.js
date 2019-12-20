@@ -43,7 +43,7 @@ function Result() {
               <span className="Github-Search text-style-1"> Search</span>
             </Col>
             <Col md={8}>
-              <SearchBar></SearchBar>
+              <SearchBar value={search}></SearchBar>
             </Col>
           </Row>
           <Row className="containerBody">

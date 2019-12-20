@@ -20,19 +20,17 @@ function Home(props) {
 
   return (
     <div className="Home">
-      <Container fluid>
-        <Row>
-          <Col className="containerTitle">
-            <span className="Github-Search">GitHub</span>
-            <span className="Github-Search text-style-1"> Search</span>
-          </Col>
-        </Row>
+      <div>
+        <span className="Github-Search">GitHub</span>
+        <span className="Github-Search text-style-1"> Search</span>
+      </div>
+      <div className="widthSearchBar">
         <SearchBar
           onChange={handlerUserName}
           onSearch={handlerSumbmit}
           value={username}
         ></SearchBar>
-      </Container>
+      </div>
     </div>
   );
 }

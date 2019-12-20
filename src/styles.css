@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:200i&display=swap");
+
 .containerRoutes {
   display: flex;
   flex: 1;
@@ -7,4 +9,5 @@
 
 .maxWidth {
   width: 1152px;
+  height: 100vh;
 }
