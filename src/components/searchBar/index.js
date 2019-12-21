@@ -13,7 +13,7 @@ function SearchBar(props) {
           placeholder="Search for a User"
           className="search-text"
         ></input>
-        <button type="submit">
+        <button type="submit" disabled={props.value === "" ? true : false}>
           <img
             src={require("../../img/search-icon.svg")}
             className="Search-Icon"
