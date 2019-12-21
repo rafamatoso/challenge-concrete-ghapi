@@ -10,6 +10,8 @@ function SearchBar(props) {
           type="search"
           id="text"
           value={props.value}
+          placeholder="Search for a User"
+          className="search-text"
         ></input>
         <button type="submit">
           <img

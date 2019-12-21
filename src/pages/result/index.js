@@ -4,16 +4,15 @@ import StargazersItem from "../../components/stargazersItem";
 import UserNotFound from "../../components/userNotFound";
 import { Container, Row, Col } from "react-grid-system";
 import api from "../../services/apiGitHub";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./styles.css";
 
 function Result(props) {
   const initialState = { exist: false };
+
   const [user, setUser] = useState(initialState);
 
   const [repos, setRepos] = useState([]);
-
-  //console.log({ repos, user });
 
   // Usado para recuperar o parâmetro da rota definido no componente Routes
   const { search } = useParams();
@@ -63,8 +62,13 @@ function Result(props) {
         <Container fluid>
           <Row className="containerHeader">
             <Col md={4} className="containerTitle">
-              <span className="Github-Search title">GitHub</span>
-              <span className="Github-Search text-style-1 title"> Search</span>
+              <Link to={"/"} className="no-link">
+                <span className="Github-Search title">GitHub</span>
+                <span className="Github-Search text-style-1 title">
+                  {" "}
+                  Search
+                </span>
+              </Link>
             </Col>
             <Col md={8}>
               <SearchBar
@@ -97,12 +101,26 @@ function Result(props) {
                       {user.email}
                     </span>
                   ) : null}
-                  <span className="user-geral padding-top-geral">
-                    {user.followers}
-                  </span>
-                  <span className="user-geral padding-top-geral">
-                    {user.following}
-                  </span>
+                  <div className="containerFollowers">
+                    <img
+                      src={require("../../img/followers-icon.svg")}
+                      alt="followers-icon"
+                      className="followers-icon"
+                    ></img>
+                    <span className="user-geral padding-top-geral">
+                      {user.followers}
+                    </span>
+                  </div>
+                  <div className="containerFollowing">
+                    <img
+                      src={require("../../img/repositorie-icon.svg")}
+                      alt="following-icon"
+                      className="following-icon"
+                    ></img>
+                    <span className="user-geral padding-top-geral">
+                      {user.following}
+                    </span>
+                  </div>
                 </div>
               </Col>
               <Col md={8} className="containerColReposInfo">

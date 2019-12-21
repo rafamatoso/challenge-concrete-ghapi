@@ -15,6 +15,8 @@
 
 .containerTitle {
   min-width: 345px;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
@@ -46,7 +48,7 @@
   height: 40px;
   font-family: Raleway;
   font-size: 35px;
-  font-weight: 300;
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -67,6 +69,32 @@
   letter-spacing: normal;
   color: #5c5c5c;
   padding-top: 0.9%;
+}
+
+.containerFollowers {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.followers-icon {
+  width: 24px;
+  height: 24px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.containerFollowing {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.following-icon {
+  width: 24px;
+  height: 24px;
+  padding-top: 10px;
+  padding-right: 10px;
 }
 
 .user-geral {
@@ -101,4 +129,8 @@
   align-items: center;
   min-width: 1200px;
   padding-top: 124px;
+}
+
+.no-link {
+  text-decoration: transparent !important;
 }
