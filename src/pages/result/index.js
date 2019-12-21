@@ -14,7 +14,7 @@ function Result(props) {
 
   const [repos, setRepos] = useState([]);
 
-  // Usado para recuperar o parâmetro da rota definido no componente Routes
+  // Used to retrieve route parameter set in Routes Component
   const { search } = useParams();
 
   const [username, setUsername] = useState(search);
@@ -25,7 +25,11 @@ function Result(props) {
       const userTemp = await api
         .get(`/users/${username}`)
         .then(result => {
-          setUser(user => ({ ...user, ...result.data, exist: true }));
+          setUser(user => ({
+            ...user,
+            ...result.data,
+            exist: true
+          }));
           per_page = result.data.public_repos;
           return true;
         })

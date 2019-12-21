@@ -7,7 +7,6 @@ function Home(props) {
 
   async function handlerSubmit(event) {
     event.preventDefault();
-
     props.history.push(`/result/${username}`);
   }
 
