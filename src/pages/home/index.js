@@ -9,9 +9,8 @@ function Home(props) {
 
   async function handlerSumbmit(event) {
     event.preventDefault();
-    await api.get(`/users/${username}`).then(result => {
-      props.history.push(`/result/${username}`);
-    });
+
+    props.history.push(`/result/${username}`);
   }
 
   function handlerUserName(event) {

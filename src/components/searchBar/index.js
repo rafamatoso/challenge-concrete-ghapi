@@ -9,7 +9,7 @@ function SearchBar(props) {
           onChange={props.onChange}
           type="search"
           id="text"
-          value={props.username}
+          value={props.value}
         ></input>
         <button type="submit">
           <img

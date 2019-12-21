@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:200i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Raleway:200i,300,400&display=swap");
 
 .containerRoutes {
   display: flex;
@@ -10,4 +10,22 @@
 .maxWidth {
   width: 1152px;
   height: 100vh;
+}
+
+.Github-Search {
+  margin-right: 10px;
+  font-family: Monaco;
+  font-size: 60px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.text-style-1 {
+  font-family: "Raleway";
+  font-weight: 200;
+  font-style: italic;
 }

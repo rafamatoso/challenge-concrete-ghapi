@@ -1,78 +1,128 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/searchBar";
 import StargazersItem from "../../components/stargazersItem";
+import UserNotFound from "../../components/userNotFound";
 import { Container, Row, Col } from "react-grid-system";
 import api from "../../services/apiGitHub";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 
-function Result() {
-  const [user, setUser] = useState({});
+function Result(props) {
+  const initialState = { exist: false };
+  const [user, setUser] = useState(initialState);
 
   const [repos, setRepos] = useState([]);
 
   //console.log({ repos, user });
 
+  // Usado para recuperar o parâmetro da rota definido no componente Routes
   const { search } = useParams();
+
+  const [username, setUsername] = useState(search);
 
   useEffect(() => {
     async function getApi() {
       let per_page;
-      await api.get(`/users/${search}`).then(result => {
-        setUser(result.data);
-        per_page = result.data.public_repos;
-      });
-      await api
-        .get(`/users/${search}/repos`, {
-          params: { per_page }
-        })
+      const userTemp = await api
+        .get(`/users/${username}`)
         .then(result => {
-          setRepos(result.data);
+          setUser(user => ({ ...user, ...result.data, exist: true }));
+          per_page = result.data.public_repos;
+          return true;
+        })
+        .catch(error => {
+          setUser(initialState);
+          return false;
         });
+
+      if (userTemp) {
+        await api
+          .get(`/users/${username}/repos`, {
+            params: { per_page }
+          })
+          .then(result => {
+            setRepos(result.data);
+          });
+      }
     }
     getApi();
   }, [search]);
+
+  async function handlerSumbmit(event) {
+    event.preventDefault();
+    props.history.push(`/result/${username}`);
+  }
+
+  function handlerUserName(event) {
+    setUsername(event.target.value);
+  }
 
   return (
     <>
       <div className="Result">
         <Container fluid>
           <Row className="containerHeader">
-            <Col md={4}>
-              <span className="Github-Search">GitHub</span>
-              <span className="Github-Search text-style-1"> Search</span>
+            <Col md={4} className="containerTitle">
+              <span className="Github-Search title">GitHub</span>
+              <span className="Github-Search text-style-1 title"> Search</span>
             </Col>
             <Col md={8}>
-              <SearchBar value={search}></SearchBar>
+              <SearchBar
+                onChange={handlerUserName}
+                onSearch={handlerSumbmit}
+                value={username}
+              ></SearchBar>
             </Col>
           </Row>
-          <Row className="containerBody">
-            <Col md={4} className="containerColUserInfo">
-              <img
-                src={user.avatar_url}
-                className="user-avatar"
-                alt="User-Avatar"
-              ></img>
-              <p>{user.name}</p>
-              <p>{user.login}</p>
-              <p>{user.bio}</p>
-              <p>{user.email}</p>
-              <p>{user.followers}</p>
-              <p>{user.following}</p>
-            </Col>
-            <Col md={8} className="containerColReposInfo">
-              {repos
-                .sort(
-                  (previous, current) =>
-                    current.stargazers_count - previous.stargazers_count
-                )
-                .map(item => (
-                  <div key={item.id}>
-                    <StargazersItem item={item}></StargazersItem>
-                  </div>
-                ))}
-            </Col>
-          </Row>
+          {user.exist ? (
+            <Row>
+              <Col md={4} className="containerColUserInfo">
+                <img
+                  src={user.avatar_url}
+                  className="user-avatar"
+                  alt="User-Avatar"
+                ></img>
+                <div className="containerUserInfo">
+                  {user.name !== null ? (
+                    <span className="user-name">{user.name}</span>
+                  ) : null}
+                  <span className="user-login">{user.login}</span>
+                  {user.bio !== null ? (
+                    <span className="user-geral padding-top-bio">
+                      {user.bio}
+                    </span>
+                  ) : null}
+                  {user.email !== null ? (
+                    <span className="user-geral padding-top-geral">
+                      {user.email}
+                    </span>
+                  ) : null}
+                  <span className="user-geral padding-top-geral">
+                    {user.followers}
+                  </span>
+                  <span className="user-geral padding-top-geral">
+                    {user.following}
+                  </span>
+                </div>
+              </Col>
+              <Col md={8} className="containerColReposInfo">
+                {repos
+                  .sort(
+                    (previous, current) =>
+                      current.stargazers_count - previous.stargazers_count
+                  )
+                  .map(item => (
+                    <div key={item.id} className="containerStargazer">
+                      <StargazersItem item={item}></StargazersItem>
+                    </div>
+                  ))}
+              </Col>
+            </Row>
+          ) : (
+            <div className="containerUserNotFound">
+              <UserNotFound></UserNotFound>
+            </div>
+          )}
         </Container>
       </div>
     </>

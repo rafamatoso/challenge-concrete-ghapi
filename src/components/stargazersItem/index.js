@@ -4,9 +4,18 @@ import "./styles.css";
 const StargazersItem = ({ item }) => (
   <div className="containerItem">
     {console.log(item)}
-    <p>{item.name}</p>
-    <p>{item.description}</p>
-    <p>{item.stargazers_count}</p>
+    <span className="repo-name">{item.name}</span>
+    {item.description !== null ? (
+      <p className="repo-description">{item.description}</p>
+    ) : null}
+    <div className="containerStar">
+      <img
+        src={require("../../img/star icon.svg")}
+        alt="star"
+        className="star-icon"
+      ></img>
+      <span className="star-count">{item.stargazers_count}</span>
+    </div>
   </div>
 );
 export default StargazersItem;
